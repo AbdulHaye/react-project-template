@@ -1,6 +1,8 @@
 {
   "name": "react-starter-template",
-  "private": false,
+  "description": "A React JS Starter Template",
+  "author": "zainulhassan815",
+  "license": "MIT",
   "version": "0.0.1",
   "type": "module",
   "scripts": {
