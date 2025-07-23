@@ -29,16 +29,16 @@ export default function Search() {
         </title>
       </Head>
       <div className="pt-6 pb-22 px-4 md:px-6 relative">
-        <div className="fixed bottom-0 left-0 right-0 z-10 w-full p-4 flex items-center justify-center">
-          {data && (
+        {data && (
+          <div className="fixed bottom-0 left-0 right-0 z-10 w-full p-4 flex items-center justify-center">
             <MoviesPagination
               className="rounded-md bg-secondary/75 p-2 backdrop-blur-xl w-auto shadow-lg"
               currentPage={page}
               totalPages={data.total_pages}
               onPageChange={setPage}
             />
-          )}
-        </div>
+          </div>
+        )}
 
         <div className="mb-6">
           <h1 className="text-3xl font-bold tracking-tight">Search Movies</h1>
