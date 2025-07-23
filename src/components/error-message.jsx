@@ -3,7 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
-export const ErrorMessage = ({ title, message, onRetry, className, ...props }) => {
+export const ErrorMessage = ({
+  title,
+  message,
+  retryButtonTitle = "Retry",
+  onRetry,
+  className,
+  ...props
+}) => {
   return (
     <Card
       className={cn("w-full p-4 gap-2 max-w-md mx-auto text-center shadow-lg", className)}
@@ -18,7 +25,7 @@ export const ErrorMessage = ({ title, message, onRetry, className, ...props }) =
       <CardContent>
         <p className="mb-4 text-muted-foreground">{message}</p>
         <Button onClick={onRetry} variant="destructive">
-          Retry
+          {retryButtonTitle}
         </Button>
       </CardContent>
     </Card>

@@ -79,6 +79,20 @@ export const genres = [
   },
 ];
 
+const mapGenreIdsToGenres = (genreIds) => {
+  return genreIds.map((id) => genres.find((genre) => genre.id === id)?.name).filter(Boolean);
+};
+
+const formatResponseData = (data) => {
+  return {
+    ...data,
+    results: data.results.map((movie) => ({
+      ...movie,
+      genres: mapGenreIdsToGenres(movie.genre_ids),
+    })),
+  };
+};
+
 export const discoverMovies = async (page = 1) => {
   const response = await axiosClient.get(
     "/discover/movie?include_video=false&language=en-US&sort_by=popularity.desc",
@@ -89,17 +103,7 @@ export const discoverMovies = async (page = 1) => {
     },
   );
 
-  if (response.status !== 200) throw new Error("Failed to fetch movies");
-
-  return {
-    ...response.data,
-    results: response.data.results.map((movie) => ({
-      ...movie,
-      genres: movie.genre_ids
-        .map((id) => genres.find((genre) => genre.id === id)?.name)
-        .filter(Boolean),
-    })),
-  };
+  return formatResponseData(response.data);
 };
 
 export const searchMovies = async (query, page = 1, { signal }) => {
@@ -111,23 +115,24 @@ export const searchMovies = async (query, page = 1, { signal }) => {
     signal: signal ?? undefined,
   });
 
-  if (response.status !== 200) throw new Error("Failed to fetch movies");
-
-  return {
-    ...response.data,
-    results: response.data.results.map((movie) => ({
-      ...movie,
-      genres: movie.genre_ids
-        .map((id) => genres.find((genre) => genre.id === id)?.name)
-        .filter(Boolean),
-    })),
-  };
+  return formatResponseData(response.data);
 };
 
-export const getMovieById = async (id, { signal }) => {
-  const response = await axiosClient.get(`/movie/${id}`, { signal });
-  if (response.status !== 200) throw new Error("Failed to fetch movie");
+export const getRecommendationsByMovieId = async (movieId) => {
+  const response = await axiosClient.get(
+    `/movie/${movieId}/recommendations?include_video=false&language=en-US`,
+  );
 
+  return formatResponseData(response.data).results;
+};
+
+export const getReviewsByMovieId = async (movieId) => {
+  const response = await axiosClient.get(`/movie/${movieId}/reviews?language=en-US`);
+  return response.data.results;
+};
+
+export const getMovieById = async (id) => {
+  const response = await axiosClient.get(`/movie/${id}`);
   return {
     ...response.data,
     genres: response.data.genres.map((genre) => genre.name),

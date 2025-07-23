@@ -1,10 +1,11 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { Head } from "@unhead/react";
 import { parseAsInteger, useQueryState } from "nuqs";
+import { Link } from "react-router";
 import { discoverMovies } from "@/api/tmdb";
 import { ErrorMessage } from "@/components/error-message";
-import { MovieCard, MovieCardSkeleton } from "@/components/movies/movie-card";
-import { MoviesPagination } from "@/components/movies/movies-pagination";
+import { MovieCard, MovieCardSkeleton } from "@/components/movie-card";
+import { MoviesPagination } from "@/components/movies-pagination";
 
 export default function Movies() {
   const [page, setPage] = useQueryState("page", parseAsInteger.withDefault(1));
@@ -54,7 +55,11 @@ export default function Movies() {
           {!isLoading &&
             !isPlaceholderData &&
             data &&
-            data.results.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
+            data.results.map((movie) => (
+              <Link key={movie.id} to={`/movies/${movie.id}`}>
+                <MovieCard movie={movie} />
+              </Link>
+            ))}
         </div>
       </div>
     </>
