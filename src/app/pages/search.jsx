@@ -4,9 +4,9 @@ import { parseAsInteger, parseAsString, useQueryState } from "nuqs";
 import { Link } from "react-router";
 import { useDebounce } from "use-debounce";
 import { searchMovies } from "@/api/tmdb";
-import { ErrorMessage } from "@/components/error-message";
-import { MovieCard, MovieCardSkeleton } from "@/components/movie-card";
-import { MoviesPagination } from "@/components/movies-pagination";
+import { ErrorMessage } from "@/components/shared/error-message";
+import { MovieCard, MovieCardSkeleton } from "@/components/shared/movie-card";
+import { MoviesPagination } from "@/components/shared/movies-pagination";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 

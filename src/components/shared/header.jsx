@@ -1,6 +1,6 @@
 import { Clapperboard, Search } from "lucide-react";
 import { NavLink } from "react-router";
-import { ThemeModeToggle } from "@/components/theme-toggle";
+import { ThemeModeToggle } from "@/components/shared/theme-toggle";
 
 export const Header = () => {
   const getNavLinkClass = ({ isActive }) =>

@@ -3,9 +3,9 @@ import { Head } from "@unhead/react";
 import { parseAsInteger, useQueryState } from "nuqs";
 import { Link } from "react-router";
 import { discoverMovies } from "@/api/tmdb";
-import { ErrorMessage } from "@/components/error-message";
-import { MovieCard, MovieCardSkeleton } from "@/components/movie-card";
-import { MoviesPagination } from "@/components/movies-pagination";
+import { ErrorMessage } from "@/components/shared/error-message";
+import { MovieCard, MovieCardSkeleton } from "@/components/shared/movie-card";
+import { MoviesPagination } from "@/components/shared/movies-pagination";
 
 export default function Movies() {
   const [page, setPage] = useQueryState("page", parseAsInteger.withDefault(1));
