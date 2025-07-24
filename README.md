@@ -99,12 +99,13 @@ Here is a high-level overview of the recommended project structure:
 src
 ├── api/              # Axios instances and API service definitions
 ├── app/              # Application pages or route components
-|   |── pages/        # Application pages
-|   ├── app.jsx       # Main application component
+│   ├── pages/        # Application pages
+│   └── app.jsx       # Main application component
 ├── assets/           # Static assets like images, fonts, etc.
 ├── components/
 │   ├── layout/       # Layout components (e.g., Header, Footer, Sidebar)
-│   └── ui/           # shadcn/ui components will be added here
+│   ├── ui/           # shadcn/ui components will be added here
+│   └── shared/       # Shared components
 ├── config/           # Application configuration files
 ├── hooks/            # Custom React hooks
 ├── lib/              # Utility functions and libraries (e.g., cn from shadcn)
