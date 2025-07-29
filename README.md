@@ -1,6 +1,7 @@
 # React Production-Ready Starter
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![gitleaks badge](https://img.shields.io/badge/protected%20by-gitleaks-blue)
 
 A robust and feature-rich starter template for building modern, data-driven React applications. This project is configured with a powerful toolchain for UI development, data fetching, state management, and code quality to get you up and running quickly.
 
